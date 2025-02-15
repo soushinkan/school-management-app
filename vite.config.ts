@@ -4,14 +4,19 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "./",  // ✅ **この行を追加**
+  base: "./",
   plugins: [react()],
-  optimizeDeps: {
-    exclude: ['lucide-react'],
-  },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'), // srcフォルダのエイリアスを設定
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+      },
     },
   },
 });
+
